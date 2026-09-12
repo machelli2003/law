@@ -26,37 +26,37 @@ export default function PracticeAreaDetail() {
         ]}
       />
 
-      <section className="py-16 md:py-24">
-        <div className="container-xl grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-14">
+      <section className="py-12 md:py-24">
+        <div className="container-xl grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-12 lg:gap-14">
           <div>
-            <h2 className="font-serif text-2xl text-navy mb-4">Overview</h2>
-            <p className="text-charcoal/75 leading-relaxed">{area.overview}</p>
+            <h2 className="font-serif text-xl md:text-2xl text-navy mb-4">Overview</h2>
+            <p className="text-charcoal/75 leading-relaxed text-sm sm:text-base">{area.overview}</p>
 
-            <h2 className="font-serif text-2xl text-navy mt-12 mb-5">
+            <h2 className="font-serif text-xl md:text-2xl text-navy mt-10 mb-4">
               Services We Provide
             </h2>
             <ul className="space-y-3">
               {area.services.map((service) => (
                 <li key={service} className="flex items-start gap-3">
                   <CheckCircle2 size={18} className="text-gold mt-0.5 shrink-0" strokeWidth={1.5} />
-                  <span className="text-charcoal/80">{service}</span>
+                  <span className="text-charcoal/80 text-sm sm:text-base">{service}</span>
                 </li>
               ))}
             </ul>
 
-            <h2 className="font-serif text-2xl text-navy mt-12 mb-4">
+            <h2 className="font-serif text-xl md:text-2xl text-navy mt-10 mb-4">
               Who We Assist
             </h2>
-            <p className="text-charcoal/75 leading-relaxed">{area.whoWeAssist}</p>
+            <p className="text-charcoal/75 leading-relaxed text-sm sm:text-base">{area.whoWeAssist}</p>
 
-            <h2 className="font-serif text-2xl text-navy mt-12 mb-4">
+            <h2 className="font-serif text-xl md:text-2xl text-navy mt-10 mb-4">
               Our Approach
             </h2>
-            <p className="text-charcoal/75 leading-relaxed">{area.approach}</p>
+            <p className="text-charcoal/75 leading-relaxed text-sm sm:text-base">{area.approach}</p>
           </div>
 
-          <aside className="lg:pl-4">
-            <div className="border border-charcoal/10 p-7 bg-ivory">
+          <aside>
+            <div className="border border-charcoal/10 p-6 bg-ivory">
               <h3 className="font-serif text-xl text-navy mb-2">
                 Discuss Your Matter
               </h3>
@@ -72,7 +72,7 @@ export default function PracticeAreaDetail() {
               </Link>
             </div>
 
-            <div className="mt-10">
+            <div className="mt-8">
               <h3 className="text-sm text-gold mb-4">Related Practice Areas</h3>
               <ul className="space-y-3">
                 {related.map((p) => (

@@ -1,7 +1,16 @@
+import { motion } from "framer-motion";
 import PageHeader from "../components/PageHeader.jsx";
 import SectionHeading from "../components/SectionHeading.jsx";
 import CTASection from "../components/CTASection.jsx";
 import { lawyers } from "../data/lawyers.js";
+import {
+  fadeUp,
+  slideLeft,
+  slideRight,
+  staggerContainer,
+  staggerItem,
+  viewport,
+} from "../utils/motion.js";
 
 const values = [
   "Integrity",
@@ -25,11 +34,16 @@ export default function About() {
       />
 
       {/* OUR STORY */}
-      <section className="py-20 md:py-28">
-        <div className="container-xl grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center">
-          <div>
+      <section className="py-14 md:py-28">
+        <div className="container-xl grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-16 items-center">
+          <motion.div
+            variants={slideLeft}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewport}
+          >
             <SectionHeading label="OUR STORY" title="A firm built around our clients." />
-            <p className="mt-6 text-charcoal/75 leading-relaxed">
+            <p className="mt-5 text-charcoal/75 leading-relaxed text-sm sm:text-base">
               Jah Bless was founded on a straightforward belief: that clients
               deserve legal counsel that is both technically sound and
               genuinely attentive to their circumstances. From individual
@@ -37,69 +51,104 @@ export default function About() {
               remains the same — listen carefully, think strategically, and
               act with integrity.
             </p>
-            <p className="mt-4 text-charcoal/75 leading-relaxed">
+            <p className="mt-4 text-charcoal/75 leading-relaxed text-sm sm:text-base">
               Today, the firm serves individuals, businesses, and institutions
               across a range of practice areas, guided by the same principles
               that shaped our founding.
             </p>
-          </div>
-          <img
-            src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200&auto=format&fit=crop"
-            alt="Jah Bless office environment"
-            className="w-full h-[420px] object-cover"
-          />
+          </motion.div>
+          <motion.div
+            className="overflow-hidden"
+            variants={slideRight}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewport}
+          >
+            <img
+              src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1200&auto=format&fit=crop"
+              alt="Jah Bless office environment"
+              className="w-full h-[260px] sm:h-[360px] md:h-[420px] object-cover"
+            />
+          </motion.div>
         </div>
       </section>
 
       {/* MISSION & VISION */}
       <section className="bg-ivory py-20 md:py-24">
-        <div className="container-xl grid grid-cols-1 md:grid-cols-2 gap-14">
-          <div>
+        <motion.div
+          className="container-xl grid grid-cols-1 md:grid-cols-2 gap-14"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewport}
+        >
+          <motion.div variants={staggerItem}>
             <p className="text-sm text-gold mb-3">OUR MISSION</p>
             <h3 className="font-serif text-2xl text-navy leading-snug">
               To provide accessible, strategic, ethical, and professional
               legal counsel.
             </h3>
-          </div>
-          <div>
+          </motion.div>
+          <motion.div variants={staggerItem}>
             <p className="text-sm text-gold mb-3">OUR VISION</p>
             <h3 className="font-serif text-2xl text-navy leading-snug">
               To become a respected legal partner known for integrity,
               excellence, and client-focused service.
             </h3>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* VALUES */}
       <section className="py-20 md:py-28">
         <div className="container-xl">
-          <SectionHeading label="OUR VALUES" title="What guides our practice." />
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-8 mt-12">
+          <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={viewport}>
+            <SectionHeading label="OUR VALUES" title="What guides our practice." />
+          </motion.div>
+          <motion.div
+            className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-8 mt-12"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewport}
+          >
             {values.map((value) => (
-              <div key={value} className="border-t border-gold/40 pt-4">
+              <motion.div
+                key={value}
+                className="border-t border-gold/40 pt-4"
+                variants={staggerItem}
+              >
                 <p className="font-serif text-lg text-navy">{value}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* LEADERSHIP */}
       <section className="bg-ivory py-20 md:py-28">
         <div className="container-xl grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-12 items-center">
-          <img
+          <motion.img
             src={managingPartner.image}
             alt={`Portrait of ${managingPartner.name}`}
             className="w-full aspect-[4/5] object-cover max-w-sm"
+            variants={slideLeft}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewport}
           />
-          <div>
+          <motion.div
+            variants={slideRight}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewport}
+          >
             <p className="text-sm text-gold mb-3">LEADERSHIP</p>
             <h2 className="font-serif text-3xl text-navy leading-tight">
               {managingPartner.name}
             </h2>
             <p className="text-gold mt-1">{managingPartner.position}</p>
-            <p className="mt-5 text-charcoal/75 leading-relaxed max-w-xl">
+            <p className="mt-5 text-charcoal/75 leading-relaxed max-w-xl text-sm sm:text-base">
               {managingPartner.bio}
             </p>
             <a
@@ -108,26 +157,32 @@ export default function About() {
             >
               View Full Profile
             </a>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* PROFESSIONAL APPROACH */}
       <section className="py-20 md:py-28">
-        <div className="container-xl max-w-3xl">
+        <motion.div
+          className="container-xl max-w-3xl"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={viewport}
+        >
           <SectionHeading label="OUR APPROACH" title="How we work with clients." />
-          <p className="mt-6 text-charcoal/75 leading-relaxed">
+          <p className="mt-6 text-charcoal/75 leading-relaxed text-sm sm:text-base">
             Every engagement begins with listening. Before recommending a
             course of action, we take the time to understand a client's
             objectives, constraints, and concerns. From there, we set out a
             clear strategy and keep clients informed at every stage — so that
             decisions are made with full understanding, not uncertainty.
           </p>
-          <p className="mt-4 text-charcoal/75 leading-relaxed">
+          <p className="mt-4 text-charcoal/75 leading-relaxed text-sm sm:text-base">
             Confidentiality and professionalism are non-negotiable, whatever
             the size or nature of the matter.
           </p>
-        </div>
+        </motion.div>
       </section>
 
       <CTASection />

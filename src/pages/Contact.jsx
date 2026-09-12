@@ -1,6 +1,8 @@
+import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import PageHeader from "../components/PageHeader.jsx";
 import ContactForm from "../components/ContactForm.jsx";
+import { slideLeft, slideRight, staggerContainer, staggerItem, viewport } from "../utils/motion.js";
 
 export default function Contact() {
   return (
@@ -12,40 +14,51 @@ export default function Contact() {
         crumbs={[{ to: "/", label: "Home" }, { label: "Contact" }]}
       />
 
-      <section className="py-20 md:py-24">
-        <div className="container-xl grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-14">
-          <div>
+      <section className="py-12 md:py-24">
+        <div className="container-xl grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-12 lg:gap-14">
+          <motion.div
+            variants={slideLeft}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewport}
+          >
             <h2 className="font-serif text-2xl text-navy mb-6">
               Contact Information
             </h2>
-            <ul className="space-y-6">
-              <li className="flex gap-4">
+            <motion.ul
+              className="space-y-6"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="show"
+              viewport={viewport}
+            >
+              <motion.li className="flex gap-4" variants={staggerItem}>
                 <MapPin size={20} className="text-gold shrink-0 mt-0.5" strokeWidth={1.5} />
                 <div>
                   <p className="text-navy text-sm">Address</p>
                   <p className="text-charcoal/70 text-sm mt-1">New York, NY, United States</p>
                 </div>
-              </li>
-              <li className="flex gap-4">
+              </motion.li>
+              <motion.li className="flex gap-4" variants={staggerItem}>
                 <Phone size={20} className="text-gold shrink-0 mt-0.5" strokeWidth={1.5} />
                 <div>
                   <p className="text-navy text-sm">Phone</p>
                   <p className="text-charcoal/70 text-sm mt-1">+1 (XXX) XXX-XXXX</p>
                 </div>
-              </li>
-              <li className="flex gap-4">
+              </motion.li>
+              <motion.li className="flex gap-4" variants={staggerItem}>
                 <Mail size={20} className="text-gold shrink-0 mt-0.5" strokeWidth={1.5} />
                 <div>
                   <p className="text-navy text-sm">Email</p>
                   <a
                     href="mailto:info@jahblesslaw.com"
-                    className="text-charcoal/70 text-sm mt-1 inline-block hover:text-gold"
+                    className="text-charcoal/70 text-sm mt-1 inline-block hover:text-gold transition-colors"
                   >
                     info@jahblesslaw.com
                   </a>
                 </div>
-              </li>
-              <li className="flex gap-4">
+              </motion.li>
+              <motion.li className="flex gap-4" variants={staggerItem}>
                 <Clock size={20} className="text-gold shrink-0 mt-0.5" strokeWidth={1.5} />
                 <div>
                   <p className="text-navy text-sm">Opening Hours</p>
@@ -53,8 +66,8 @@ export default function Contact() {
                     Monday – Friday, 8:00 AM – 5:00 PM
                   </p>
                 </div>
-              </li>
-            </ul>
+              </motion.li>
+            </motion.ul>
 
             <p className="text-xs text-charcoal/40 mt-8 max-w-xs leading-relaxed">
               Contact details above are demo placeholders and can be replaced
@@ -70,14 +83,19 @@ export default function Contact() {
                 firm's exact location.
               </p>
             </div>
-          </div>
+          </motion.div>
 
-          <div>
+          <motion.div
+            variants={slideRight}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewport}
+          >
             <h2 className="font-serif text-2xl text-navy mb-6">
               Request a Consultation
             </h2>
             <ContactForm />
-          </div>
+          </motion.div>
         </div>
       </section>
     </>

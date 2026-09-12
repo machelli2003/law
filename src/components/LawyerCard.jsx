@@ -1,14 +1,17 @@
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 export default function LawyerCard({ lawyer }) {
   return (
     <Link to={`/lawyers/${lawyer.slug}`} className="group block">
       <div className="overflow-hidden bg-ivory">
-        <img
+        <motion.img
           src={lawyer.image}
           alt={`Portrait of ${lawyer.name}`}
-          className="w-full aspect-[4/5] object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+          className="w-full aspect-[4/5] object-cover"
           loading="lazy"
+          whileHover={{ scale: 1.04 }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
         />
       </div>
       <div className="pt-4">

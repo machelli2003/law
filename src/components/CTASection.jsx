@@ -1,4 +1,6 @@
+import { motion } from "framer-motion";
 import Button from "./Button.jsx";
+import { fadeUp, staggerContainer, staggerItem, viewport } from "../utils/motion.js";
 
 export default function CTASection({
   eyebrow = "NEED LEGAL GUIDANCE?",
@@ -7,23 +9,40 @@ export default function CTASection({
 }) {
   return (
     <section className="bg-navy text-white">
-      <div className="container-xl py-20 md:py-24 text-center">
-        <p className="text-sm text-gold mb-4">{eyebrow}</p>
-        <h2 className="font-serif text-3xl md:text-4xl max-w-2xl mx-auto leading-tight">
+      <motion.div
+        className="container-xl py-20 md:py-24 text-center"
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="show"
+        viewport={viewport}
+      >
+        <motion.p className="text-sm text-gold mb-4" variants={staggerItem}>
+          {eyebrow}
+        </motion.p>
+        <motion.h2
+          className="font-serif text-3xl md:text-4xl max-w-2xl mx-auto leading-tight"
+          variants={staggerItem}
+        >
           {title}
-        </h2>
-        <p className="text-white/70 max-w-xl mx-auto mt-5 leading-relaxed">
+        </motion.h2>
+        <motion.p
+          className="text-white/70 max-w-xl mx-auto mt-5 leading-relaxed"
+          variants={staggerItem}
+        >
           {text}
-        </p>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-9">
+        </motion.p>
+        <motion.div
+          className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 mt-9"
+          variants={staggerItem}
+        >
           <Button to="/contact" variant="primary">
             Request a Consultation
           </Button>
           <Button to="/contact" variant="outlineLight">
             Contact Our Office
           </Button>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
